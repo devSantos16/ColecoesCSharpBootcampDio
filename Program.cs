@@ -1,15 +1,25 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
 using System.Collections.Generic;
+using ColecoesCSharpBootcampDio.Models;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
 
+        Pessoa p = new Pessoa("Emanuel dos Santos Paz", 22);
+
+        // Era pra ta funcionando, não sei pq não está (string nome, int idade) = p;
+        // Tupla
+        (int, string, string) tupla = (22, "Emanuel", "dos Santos Paz");
+        ValueTuple<int, string, string> outroExemploTupla = (22, "Emanuel", "dos Santos Paz");
+        // Tupla com metodo, o underline representa informação não usada
+        var (sucesso, linhas, _) = LeituraArquivo.LerArquivo("LeituraArquivo.txt");
         // Dictionary
         Dictionary<int, string> dic = new Dictionary<int, string>();
         // Fila
+
         Queue<int> fila = new Queue<int>();
         // Pilha
         Stack<int> pilha = new Stack<int>();
@@ -54,7 +64,19 @@ internal class Program
         {
             Console.WriteLine($"{item.Key}: {item.Value}");
         }
+        Console.WriteLine(tupla.Item1);
+
+        if (sucesso)
+        {
+            //    Console.WriteLine($"Numero de linha: {tuplaArquivo.Item3}");
+            foreach (string item in linhas)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        else
+        {
+            Console.WriteLine("Não foi encontrado o arquivo desejado");
+        }
     }
-
-
 }
